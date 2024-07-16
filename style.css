@@ -1,0 +1,107 @@
+.dashboard {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    bottom: 5px;
+    left: 5px;
+    background-color: rgba(255, 255, 255, 0.445);
+    border: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#treeimg {
+    width: 80px;
+    height: 80px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+#notrees {
+    font-size: 35px;
+    margin: 0;
+}
+
+#myPieChart {
+    font-size: larger;
+    width: 250px !important;
+    height: 200px !important;
+}
+
+#treeDropdown {
+    width: 250px;
+    position: absolute;
+    top: 47%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    font-size: 14px; /* Font size */
+    padding: 8px; /* Padding inside the dropdown */
+}
+
+/* Style for the option "All Trees" */
+#treeDropdown option[value=""] {
+    font-style: italic; /* Italicize the placeholder option */
+    color: #888; /* Light gray color */
+}
+
+ .geolocate{
+    background-color: rgba(255, 255, 255, .4) !important;
+    padding: 3px !important;
+    right: 5px !important;
+    bottom: 50px;
+    font-size:20px;
+}
+#home_button{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    right: 5px;
+}
+@media (max-width: 600px) {
+    .dashboard {
+        width: 190px;
+        padding: 5px;
+        margin-top: -10px;
+    }
+    #treeimg {
+        width: 60px;
+        height: 60px;
+    }
+    .text-container {
+        margin-left: 5px;
+    }
+    #myPieChart {
+        width: 150px !important;
+        height: 150px !important;
+        margin-top: -10px;
+    }
+    #notrees {
+        font-size: 25px;
+        margin: 0;
+    }
+    #total_text {
+        font-size: 10px;
+    }
+}
