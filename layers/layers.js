@@ -155,7 +155,7 @@ var myPieChart = new Chart(ctx, {
    },
    options: options
 });
- // Extract unique English_Name_Konkani_Name_Scientific_Name_ values
+// Extract unique English_Name_Konkani_Name_Scientific_Name_ values
 var uniqueNames = {};
 features_Trees_2.forEach(function(feature) {
     var fieldValue = feature.get('English_Name_Konkani_Name_Scientific_Name_');
@@ -164,14 +164,48 @@ features_Trees_2.forEach(function(feature) {
     }
 });
 
-var namesArray = Object.keys(uniqueNames); // Get all unique names
+var namesArray = Object.keys(uniqueNames).sort(); // Get all unique names and sort them alphabetically
 
 $(document).ready(function() {
     var $dropdown = $('#treeDropdown');
+// Append the default option first
+$dropdown.append(new Option('All Trees', ''));
 
     // Append options to the dropdown
     namesArray.forEach(function(name) {
         $dropdown.append(new Option(name, name));
+    });
+  
+
+    // Initialize Select2 with a custom matcher
+    $dropdown.select2({
+        placeholder: 'Select a tree',
+        allowClear: true,
+ 
+        matcher: function(params, data) {
+            // If there are no search terms, return all of the data
+            if ($.trim(params.term) === '') {
+                return data;
+            }
+
+            // Do not display the item if there is no 'text' property
+            if (typeof data.text === 'undefined') {
+                return null;
+            }
+
+            // Custom match logic: match the term to the beginning of the text
+            var term = params.term.toUpperCase();
+            var text = data.text.toUpperCase();
+
+            if (text.indexOf(term) === 0) {
+                return data;
+            }
+            
+
+            // Return `null` if the term should not be displayed
+            return null;
+        }
+
     });
 
     // Function to filter map features based on selected tree name
@@ -187,24 +221,19 @@ $(document).ready(function() {
 
         // Add filtered features back to the layer source
         jsonSource_Trees_2.addFeatures(filteredFeatures);
-         // Update the text content based on filter
-    if (treeName) {
-        document.getElementById('total_text').innerText = 'Trees planted';
-    } else {
-        document.getElementById('total_text').innerText = 'Total trees planted';
-    }
 
-        
+        // Update the text content based on filter
+        if (treeName) {
+            document.getElementById('total_text').innerText = 'Trees planted';
+        } else {
+            document.getElementById('total_text').innerText = 'Total trees planted';
+        }
 
         // Zoom to extent of filtered features
-     
+        
     }
 
     // Event listener for dropdown change
-    $dropdown.on('change', function(e) {
-        var selectedTree = $(this).val();
-
-        // Event listener for dropdown change
     $dropdown.on('change', function(e) {
         var selectedTree = $(this).val();
 
@@ -217,23 +246,18 @@ $(document).ready(function() {
         }
     });
 
-        // Call function to filter map features based on selected tree name
-        filterMapByTreeName(selectedTree);
-    });
-
     // Function to reset map to show all features
-   // Function to reset map to show all features
-function resetMap() {
-    jsonSource_Trees_2.clear();
-    jsonSource_Trees_2.addFeatures(features_Trees_2);
-    var extent = [8216522.173750, 1744991.831563, 8220563.547759, 1747406.056648];
-    map.getView().fit(extent, { size: map.getSize() });
-}
-
+    function resetMap() {
+        jsonSource_Trees_2.clear();
+        jsonSource_Trees_2.addFeatures(features_Trees_2);
+        var extent = [8216522.173750, 1744991.831563, 8220563.547759, 1747406.056648];
+        map.getView().fit(extent, { size: map.getSize() });
+    }
 
     // Reset map on initial load
     resetMap();
 });
+
 const homebutton = document.getElementById('home_button');
 homebutton.addEventListener('click', function() {
     var extent = [8216522.173750, 1744991.831563, 8220563.547759, 1747406.056648];

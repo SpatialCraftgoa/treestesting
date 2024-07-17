@@ -1,3 +1,56 @@
+
+#map{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.select2-container--default {
+    position: absolute;
+    top: 12%; /* Adjust vertical position as needed */
+    left: 5px; /* Adjust horizontal position as needed */
+
+    z-index: 1000;
+    width: 170px; /* Adjust width as needed */
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    height: 28px;
+    line-height: 28px; /* Ensure line height matches height for vertical centering */
+    padding: 0 10px; /* Adjust padding as needed */
+    box-sizing: border-box;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 26px; /* Adjust arrow height as needed */
+    position: absolute;
+    top: 1px;
+    right: 1px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    margin-top: -3px; /* Adjust arrow alignment as needed */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    right: 20px;
+    top: 3px;
+}
+
+
 .dashboard {
     position: absolute;
     width: 300px;
@@ -46,37 +99,46 @@
     height: 200px !important;
 }
 
-#treeDropdown {
-    width: 250px;
+
+.fa-map-marker:before {
+    content: none;
+   
+}
+.geolocate {
     position: absolute;
-    top: 47%;
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ccc; /* Add border */
-    border-radius: 4px; /* Rounded corners */
-    background-color: #fff; /* White background */
-    font-size: 14px; /* Font size */
-    padding: 8px; /* Padding inside the dropdown */
-}
-
-/* Style for the option "All Trees" */
-#treeDropdown option[value=""] {
-    font-style: italic; /* Italicize the placeholder option */
-    color: #888; /* Light gray color */
-}
-
- .geolocate{
     background-color: rgba(255, 255, 255, .4) !important;
     padding: 3px !important;
     right: 5px !important;
     bottom: 50px;
-    font-size:20px;
+    font-size: 20px;
+    z-index: 1000; /* Ensure it's above other elements */
+    border: 1px solid;
+    border-color: black;
 }
+
+.fa-map-marker {
+    display: inline-block; /* Ensure it behaves like a block element */
+    width: 24px; /* Adjust width and height to match your icon */
+    height: 24px;
+    background-image: url('pics/png-transparent-computer-icons-google-maps-location-navigational-map-location-geolocation-removebg-preview.png');
+    background-size: contain; /* Ensure the icon covers the container */
+    background-repeat: no-repeat; /* Prevent repeating the icon */
+    position: relative; /* Ensure relative positioning */
+    z-index: 1; /* Ensure it's above the background */
+    line-height: 24px; /* Ensure icon is vertically centered */
+    background-position: center ; /* Move the background image to center horizontally and bottom vertically */
+}
+.fa-map-marker:after {
+    content: none;
+    background-color: blue;
+   
+}
+
 #home_button{
-    width: 50px;
-    height: 50px;
+    width: 36px;
+    height: 36px;
     position: absolute;
-    top: 30px;
+    bottom: 100px;
     right: 5px;
 }
 @media (max-width: 600px) {
@@ -104,4 +166,52 @@
     #total_text {
         font-size: 10px;
     }
+    .select2-container--default {
+        position: absolute;
+        top: 12%; /* Adjust vertical position as needed */
+        left: 5px; /* Adjust horizontal position as needed */
+        z-index: 1000;
+        width: 100%; /* Take full width on mobile */
+        max-width: 250px; /* Adjust maximum width as needed */
+    }
+    
+    .select2-container--default .select2-selection--single {
+        background-color: #fff;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        height: 36px; /* Increase height for better touch target */
+        line-height: 36px; /* Ensure line height matches height for vertical centering */
+        padding: 0 10px; /* Adjust padding as needed */
+        box-sizing: border-box;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 34px; /* Adjust arrow height as needed */
+        position: absolute;
+        top: 1px;
+        right: 1px;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+        margin-top: -3px; /* Adjust arrow alignment as needed */
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__clear {
+        cursor: pointer;
+        float: right;
+        font-weight: bold;
+        right: 10px; /* Adjust clear button position */
+        top: 4px; /* Adjust clear button position */
+    }
+    .fa-map-marker:before {
+        content: none;
+    }
+    
 }
