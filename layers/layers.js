@@ -178,10 +178,11 @@ $dropdown.append(new Option('All Trees', ''));
   
 
     // Initialize Select2 with a custom matcher
+    // Initialize Select2 with a custom matcher
     $dropdown.select2({
         placeholder: 'Select a tree',
         allowClear: true,
- 
+       // dropdownCssClass: 'select2-dropdown-up', // Add custom CSS class for additional styling if needed
         matcher: function(params, data) {
             // If there are no search terms, return all of the data
             if ($.trim(params.term) === '') {
@@ -200,13 +201,11 @@ $dropdown.append(new Option('All Trees', ''));
             if (text.indexOf(term) === 0) {
                 return data;
             }
-            
 
             // Return `null` if the term should not be displayed
             return null;
         }
-
-    });
+    })
 
     // Function to filter map features based on selected tree name
     function filterMapByTreeName(treeName) {

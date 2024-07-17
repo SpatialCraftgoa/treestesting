@@ -6,10 +6,9 @@
 }
 
 .select2-container--default {
-    position: absolute;
+    position: relative;
     top: 12%; /* Adjust vertical position as needed */
     left: 5px; /* Adjust horizontal position as needed */
-
     z-index: 1000;
     width: 170px; /* Adjust width as needed */
 }
@@ -50,7 +49,18 @@
     top: 3px;
 }
 
+.select2-dropdown-up {
+    position: absolute; /* Ensure the dropdown is absolutely positioned */
+    bottom: 100%; /* Position the dropdown above the triggering element */
+    top: auto; /* Remove default top positioning */
+}
 
+.select2-results { /* Adjust results container for upward opening */
+    overflow-y: auto; /* Allow scrolling for long lists */
+    max-height: 200px; /* Set a maximum height (adjust as needed) */
+}
+
+  
 .dashboard {
     position: absolute;
     width: 300px;
@@ -135,8 +145,8 @@
 }
 
 #home_button{
-    width: 36px;
-    height: 36px;
+    width: 48px;
+    height: 48px;
     position: absolute;
     bottom: 100px;
     right: 5px;
@@ -168,7 +178,7 @@
     }
     .select2-container--default {
         position: absolute;
-        top: 12%; /* Adjust vertical position as needed */
+        top: 1%; /* Adjust vertical position as needed */
         left: 5px; /* Adjust horizontal position as needed */
         z-index: 1000;
         width: 100%; /* Take full width on mobile */
@@ -213,5 +223,22 @@
     .fa-map-marker:before {
         content: none;
     }
-    
+    .geolocate {
+        position: absolute;
+        background-color: rgba(255, 255, 255, .4) !important;
+        padding: 3px !important;
+        right: 5px !important;
+        bottom: 30px;
+        font-size: 10px;
+        z-index: 1000; /* Ensure it's above other elements */
+        border: 1px solid;
+        border-color: black;
+    }
+    #home_button{
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        bottom: 70px;
+        right: 0px;
+    }
 }
