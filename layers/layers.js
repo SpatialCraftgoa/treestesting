@@ -185,25 +185,34 @@ $dropdown.append(new Option('All Trees', ''));
        // dropdownCssClass: 'select2-dropdown-up', // Add custom CSS class for additional styling if needed
         matcher: function(params, data) {
             // If there are no search terms, return all of the data
-            if ($.trim(params.term) === '') {
-                return data;
-            }
+          // If there are no search terms, return all of the data
+          if ($.trim(params.term) === '') {
+            return data;
+        }
 
-            // Do not display the item if there is no 'text' property
-            if (typeof data.text === 'undefined') {
-                return null;
-            }
-
-            // Custom match logic: match the term to the beginning of the text
-            var term = params.term.toUpperCase();
-            var text = data.text.toUpperCase();
-
-            if (text.indexOf(term) === 0) {
-                return data;
-            }
-
-            // Return `null` if the term should not be displayed
+        // Do not display the item if there is no 'text' property
+        if (typeof data.text === 'undefined') {
             return null;
+        }
+
+        // Custom match logic: match the term to the beginning of the text
+        var term = params.term.toUpperCase();
+        var text = data.text.toUpperCase();
+
+        // Split the combined name into parts
+        var parts = text.split(/[\/\(\)]/).map(function(part) {
+            return part.trim();
+        });
+
+        // Check if any part starts with the term
+        for (var i = 0; i < parts.length; i++) {
+            if (parts[i].indexOf(term) === 0) {
+                return data;
+            }
+        }
+
+        // Return `null` if the term should not be displayed
+        return null;
         }
     })
 
